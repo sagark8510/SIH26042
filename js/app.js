@@ -1,44 +1,28 @@
-
-// Global State Keys
-const STATE_KEY_LANG = "sih_selected_lang";
-const STATE_KEY_ROLE = "sih_user_role";
-
-// App Core Controller
+// Central Controller - Manages Language & Role
 const App = {
-  // Current Target Language
-  getLanguage: () => localStorage.getItem(STATE_KEY_LANG) || "Santhali",
-  setLanguage: (lang) => localStorage.setItem(STATE_KEY_LANG, lang),
-
-  // Current User Role: 'student' or 'teacher'
-  getRole: () => localStorage.getItem(STATE_KEY_ROLE) || "student",
-  setRole: (role) => localStorage.setItem(STATE_KEY_ROLE, role),
-
-  // Common UI Initializer
-  initPage: (pageName) => {
-    // Top bar language badge auto-update
-    const langBadge = document.getElementById("currentLangDisplay");
-    if (langBadge) {
-      langBadge.textContent = "🌐 " + App.getLanguage();
-    }
-
-    // Mark active bottom nav item automatically
-    const navLinks = document.querySelectorAll(".nav-item");
-    navLinks.forEach((link) => {
-      if (link.getAttribute("data-page") === pageName) {
-        link.classList.add("active");
-      }
-    });
+  getLanguage: function () {
+    return localStorage.getItem("bhasha_lang") || "Santhali";
   },
-
-  // Safe Navigation Helper
-  navigateTo: (pageUrl) => {
-    window.location.href = pageUrl;
+  setLanguage: function (lang) {
+    localStorage.setItem("bhasha_lang", lang);
+  },
+  getRole: function () {
+    return localStorage.getItem("bhasha_role") || "student";
+  },
+  setRole: function (role) {
+    localStorage.setItem("bhasha_role", role);
+  },
+  initHeader: function () {
+    const badge = document.getElementById("currentLangDisplay");
+    if (badge) {
+      badge.textContent = "🌐 " + this.getLanguage();
+    }
+  },
+  navigateTo: function (url) {
+    window.location.href = url;
   }
 };
 
-// Global error-free initializer on load
 window.addEventListener("DOMContentLoaded", () => {
-  const body = document.body;
-  const pageId = body.getAttribute("data-page") || "home";
-  App.initPage(pageId);
+  App.initHeader();
 });
