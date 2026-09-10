@@ -1,1 +1,58 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PALASH MTB-MLE Portal | SIH26042</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="home">
+
+  <nav class="navbar">
+    <span class="brand">PALASH EduBridge</span>
+    <a href="language.html" id="currentLangDisplay" class="lang-badge">🌐 Santhali</a>
+  </nav>
+
+  <main class="container">
+    <div class="card" style="text-align: center; margin-top: 10px;">
+      <h2 style="color: var(--primary);">Mother-Tongue Education</h2>
+      <p style="color: var(--muted); font-size: 0.9rem; margin-top: 6px;">
+        Government of Jharkhand | NIPUN Bharat FLN Alignment
+      </p>
+    </div>
+
+    <!-- Choose Role -->
+    <div class="card">
+      <h3 style="margin-bottom: 12px;">Choose Your Role</h3>
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <button class="btn btn-primary" onclick="selectRoleAndRedirect('student', 'student.html')">
+          🎓 I am a Student / Chhatra
+        </button>
+        <button class="btn btn-secondary" onclick="selectRoleAndRedirect('teacher', 'teacher.html')">
+          👨‍🏫 I am a Teacher / Shikshak
+        </button>
+      </div>
+    </div>
+
+    <!-- Quick Navigation to Core Features -->
+    <div class="card">
+      <h4 style="margin-bottom: 10px;">Direct Prototype Modules</h4>
+      <div class="grid-2">
+        <a href="language.html" class="btn btn-outline">🌐 Select Language</a>
+        <a href="translator.html" class="btn btn-outline">🔄 Quick Translate</a>
+        <a href="voice-learning.html" class="btn btn-outline">🎤 Voice Dialogue</a>
+        <a href="lessons.html" class="btn btn-outline">📚 FLN Lessons</a>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/app.js"></script>
+  <script>
+    function selectRoleAndRedirect(role, targetPage) {
+      App.setRole(role);
+      App.navigateTo(targetPage);
+    }
+  </script>
+</body>
+</html>
